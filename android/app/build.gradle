@@ -1,0 +1,57 @@
+plugins {
+    id "com.android.application"
+}
+
+// Salin file web (index.html, css, js, assets) ke dalam APK sebelum build
+def webDir = file("$rootDir/..")
+def wwwOut = file("$buildDir/generated/www")
+tasks.register("copyWeb", Copy) {
+    from(webDir) {
+        include "index.html", "manifest.webmanifest", "css/**", "js/**", "assets/**"
+    }
+    into "$wwwOut/www"
+}
+
+android {
+    namespace "com.duniapuzzle.app"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.duniapuzzle.app"
+        minSdk 21
+        targetSdk 34
+        versionCode((System.getenv("VERSION_CODE") ?: "1") as int)
+        versionName "1.0." + (System.getenv("VERSION_CODE") ?: "0")
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("dunia-puzzle.keystore")
+            storePassword "duniapuzzle"
+            keyAlias "duniapuzzle"
+            keyPassword "duniapuzzle"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main.assets.srcDirs += wwwOut
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+preBuild.dependsOn("copyWeb")
+
+dependencies {
+    implementation "androidx.webkit:webkit:1.11.0"
+}

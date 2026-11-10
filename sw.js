@@ -1,7 +1,7 @@
 /* Service worker: cache semua file agar game bisa dimainkan offline */
-const CACHE = "dunia-puzzle-v1";
+const CACHE = "dunia-puzzle-v2";
 const FILES = [
-  "./", "index.html", "manifest.webmanifest", "css/style.css",
+  "./", "index.html", "manifest.webmanifest", "css/style.css", "css/fonts.css", "assets/fonts/fredoka.woff2", "assets/fonts/nunito.woff2",
   "js/app.js", "js/data/words.js", "js/data/quiz.js",
   "js/games/word.js", "js/games/logic.js", "js/games/number.js", "js/games/memory.js", "js/games/strategy.js",
   "assets/icon.svg", "assets/icon-192.png", "assets/icon-512.png",

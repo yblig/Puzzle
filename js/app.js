@@ -433,7 +433,8 @@ function makeApi(game, body, statsEl, restart) {
 /* ---------- Boot ---------- */
 window.addEventListener("DOMContentLoaded", () => {
   route();
-  if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  const inApp = /DuniaPuzzleApp/.test(navigator.userAgent);
+  if (!inApp && "serviceWorker" in navigator && location.protocol.startsWith("http")) {
     navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 });
