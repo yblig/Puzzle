@@ -25,7 +25,13 @@ Daftar kata ada di [`js/data/words.js`](js/data/words.js). Untuk menambah kata, 
 
 Fitur umum: tingkat kesulitan, rekor terbaik & jumlah menang tersimpan di perangkat, efek suara (bisa dimatikan), confetti, petunjuk cara main di setiap game, kontrol sentuh/swipe & keyboard.
 
-## ▶️ Menjalankan
+## 📱 Download APK (Android)
+
+Ambil file `.apk` terbaru di halaman **[Releases](https://github.com/yblig/Puzzle/releases/latest)**, buka di HP, lalu izinkan "Install dari sumber tidak dikenal" jika diminta.
+
+APK di-build otomatis oleh GitHub Actions (`.github/workflows/build-apk.yml`) setiap ada perubahan pada game. Proyek Android-nya ada di folder `android/`: aplikasi WebView sederhana yang memuat game dari dalam APK, jadi tetap jalan tanpa internet. Untuk build sendiri: `gradle -p android assembleRelease` (perlu Android SDK).
+
+## ▶️ Menjalankan (versi web)
 
 ```bash
 python3 -m http.server 8000
