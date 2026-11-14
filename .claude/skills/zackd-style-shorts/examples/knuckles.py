@@ -129,7 +129,7 @@ def s_hook(c):
     b = burst((0.0, -0.55, 1.18), n=12, r=0.16)
     anim.pop_in(b, k, dur=5)
     anim.pop_out(b, k + 10, dur=6)
-    t = screen_text(cam, "CRACK!", pos=(0.0, 0.30), size=0.11, c="yellow", tilt=-8)
+    t = screen_text(cam, "CRACK!", pos=(0.05, 0.42), size=0.1, c="yellow", tilt=-8)
     anim.pop_in(t, k)
     cam.shake(k, k + 12, amp=0.035)
 

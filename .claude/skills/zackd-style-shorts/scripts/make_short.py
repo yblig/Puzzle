@@ -335,8 +335,9 @@ def cmd_assemble(a):
     log("joining shots + burning captions")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst,
                     "-i", mix, "-vf", vf, "-map", "0:v", "-map", "1:a",
+                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=11",  # platform loudness
                     "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
-                    "-r", str(st.FPS), "-c:a", "aac", "-b:a", "192k", "-shortest",
+                    "-r", str(st.FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-shortest",
                     "-movflags", "+faststart", out], check=True)
     pr = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration:stream=width,height,r_frame_rate",
                          "-of", "json", out], capture_output=True, text=True)
