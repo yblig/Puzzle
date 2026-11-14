@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: bee-sting-full-video
+expected_outcome: |
+  A finished vertical MP4 (1080x1920, 30 fps, 25-50 s) explaining a bee sting in second person, with a hook first line, x-ray/close-up shots of the stinger and venom, word-by-word captions, sound effects and music, and a checked FACTS list in the story file.
